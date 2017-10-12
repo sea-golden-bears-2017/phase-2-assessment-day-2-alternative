@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   validates :username, :email, presence: true, uniqueness: true
 
+  has_many :potlucks
+
   def password
     @password ||= Password.new(password_hash)
   end

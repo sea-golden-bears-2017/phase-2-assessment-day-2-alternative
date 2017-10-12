@@ -28,6 +28,7 @@
       </div>
     <% else %>
       <div id="logout">
+        <button type="button" name="button"><a href="/potluck/new">Host a Potluck</a></button>
         <form id="user-logout" action="/session/<%= session[:user_id] %>" method="post">
           <input type="hidden" name="_method" value="delete">
           <button type="submit" name="button">Logout</button>
