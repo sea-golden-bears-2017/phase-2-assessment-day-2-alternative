@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -15,9 +15,44 @@
   <script src="/js/jquery.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Potlucks Planner</title>
 </head>
 <body>
-  <%= yield %>
+
+  <!-- Check if Session exists -->
+  <nav>
+    <div class="navbar">
+      <div class="navbar-interior">
+      <% if session[:user_id].nil? %>
+      <div class="login-logout">
+          <div id="login-signup">
+            <button class="navigation-button" type="button" name="button"><a href="/session/new">Login</a></button>
+            <button class="navigation-button" type="button" name="button"><a href="/user/new">Register</a></button>
+          </div>
+          <h1>Potluck Planner </h1>
+        <% else %>
+          <div id="logout">
+            <button class="navigation-button" type="button" name="button"><a href="/potluck/new">Host a Potluck</a></button>
+            <form id="user-logout" action="/session/<%= session[:user_id] %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button class="navigation-button" type="submit" name="button">Logout</button>
+            </form>
+            <h1>Potluck Planner </h1>
+            <h3>Welcome Back <%= User.find(session[:user_id]).username %> </h1>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </nav>
+
+  <!-- Error Handler -->
+  <div id="error-handler">
+  <% if @error != nil %>
+    <p><%= @error %></p>
+  <% end %>
+</div>
+
+    <%= yield %>
 </body>
 </html>
