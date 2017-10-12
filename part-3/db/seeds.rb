@@ -8,5 +8,5 @@ User.create(username: "blaine", email:
 end
 
 5.times do
-  Potluck.create(name: Faker::Food.unique.dish, location: Faker::ElderScrolls.region, date_at: "#{rand(10)}#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}#{rand(10)}-#{rand(10)}#{rand(10)}", time_at: "#{rand(10)}#{rand(10)}:#{rand(10)}#{rand(10)}", user_id: rand(10))
+  Potluck.create(name: Faker::Food.unique.dish, location: Faker::ElderScrolls.region, date_at: "#{rand(10)}#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}#{rand(10)}-#{rand(10)}#{rand(10)}", time_at: "#{rand(10)}#{rand(10)}:#{rand(10)}#{rand(10)}", user: User.all.sample)
 end
