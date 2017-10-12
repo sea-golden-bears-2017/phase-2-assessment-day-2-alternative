@@ -1,0 +1,49 @@
+<h1><%= @entry.title %></h1>
+<h2> Created by: <%= @entry.user.user_name %> </h2>
+
+<ul>
+  <li><%= @entry.location %></li><br />
+  <li><%= @entry.time %></li><br />
+  <li><%= @entry.date %></li><br />
+  <li><%= @entry.host %></li><br />
+</ul>
+
+<% if session[:id] == @entry.user.id %>
+<ul>
+  <li>
+    <a href="/entries/<%= @entry.id %>/edit">edit</a>
+  </li>
+
+  <li>
+    <form method="post" action="/entries/<%= @entry.id %>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete">
+    </form>
+  </li>
+</ul>
+<% end %>
+
+<% if session[:id] %>
+
+  <h2>Attend the Potluck</h2>
+
+  <form method="post" action="/comment/new">
+    <label for="body">What dish will you bring?
+      <input id="body" name="comment[body]" type="text" value="">
+    </label><br />
+
+    <input type="submit" value="RSVP">
+  </form>
+<% end %>
+
+
+<h2>Attending:</h2>
+<div>
+  <ul>
+    <% @comments.each do |comment| %>
+      <li>
+        <p><%= comment.body %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

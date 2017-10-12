@@ -1,0 +1,17 @@
+<h1>Potluck Party</h1>
+
+
+<% if session[:id] %>
+  <a href="/entries/new">Add New Event</a>
+<% end %>
+
+<div>
+  <ul>
+    <% @entries.each do |entry| %>
+      <li>
+        <a href="/entries/<%= entry.id %>"><%= entry.title %></a>
+        <p><%= "#{entry.date} at #{entry.location}" %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

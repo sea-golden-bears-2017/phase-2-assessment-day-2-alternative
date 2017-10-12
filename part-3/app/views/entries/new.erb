@@ -1,0 +1,34 @@
+<h1>Make a New Event</h1>
+
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form method="post" action="/entries">
+  <label for="title">Title:
+    <input id="title" name="entry[title]" type="text" value="<%= @entry.try(:title) %>">
+  </label><br />
+
+  <label for="location">Location:
+    <input id="location" name="entry[location]" type="text" value="<%= @entry.try(:location) %>">
+  </label><br />
+
+  <label for="time">Time:
+    <input id="time" name="entry[time]" type="text" value="<%= @entry.try(:time) %>">
+  </label><br />
+
+  <label for="date">Date:
+    <input id="date" name="entry[date]" type="text" value="<%= @entry.try(:date) %>">
+  </label><br />
+
+  <label for="host">Host:
+    <input id="host" name="entry[host]" type="text" value="<%= @entry.try(:host) %>">
+  </label><br />
+
+
+  <input type="submit" value="Publish">
+</form>
