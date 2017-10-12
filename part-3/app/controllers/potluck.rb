@@ -12,7 +12,7 @@ post '/potluck' do
   @potluck.date_at = date_at
   @potluck.time_at = time_at
   @potluck.save!
-  redirect "/potluck/#{@potluck.id}"
+  erb :"/potluck/show}"
 end
 
 get '/potluck' do
@@ -21,6 +21,6 @@ get '/potluck' do
 end
 
 get '/potluck/:id' do
-  @potluck = params[:id]
+  @potluck = Potluck.find(params[:id])
   erb :'/potlucks/show'
 end
