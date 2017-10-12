@@ -34,15 +34,30 @@ get '/potluck/:id' do
   erb :'/potlucks/show'
 end
 
+get '/potluck/:id/edit' do
+  @potluck = Potluck.find(params[:id])
+  erb :'/potlucks/edit'
+end
+
 put '/potluck/:id' do
   @potluck = Potluck.find(params[:id])
   @potluck.update(params[:potluck])
-  @potluck.save!
-  erb :"/potluck/show"
+  params[:datetime].split(' ')
+  date_at = params[:datetime].split(' ')[0]
+  time_at = params[:datetime].split(' ')[1]
+  @potluck.date_at = date_at
+  @potluck.time_at = time_at
+  if @potluck.name == "" || @potluck.location == "" || @potluck.date_at == "" || @potluck.time_at == ""
+    @error = "All fields must be filled out to edit a potluck."
+    # ERB is not setup correctly yet
+    erb :"/potluck/@potluck.id/edit"
+  else
+    @potluck.save!
+    redirect "/potluck/#{@potluck.id}"
+  end
 end
 
 delete '/potluck/:id' do
   Potluck.delete(params[:id])
-  @potlucks = Potluck.all
-  erb :'/index'
+  redirect '/'
 end

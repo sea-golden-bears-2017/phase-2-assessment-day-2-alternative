@@ -9,6 +9,7 @@
 <% if session[:user_id].nil? %>
 
 <% elsif session[:user_id] == @potluck.user.id%>
+  <button id="submit-edit" type="submit" name="submit"><a href="/potluck/<%= @potluck.id %>/edit">Edit This Potluck</a></button>
   <form class="potluck-delete-form" action="/potluck/<%= @potluck.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button id="submit-delete" type="submit" name="submit">Delete This Potluck</button>
