@@ -24,17 +24,15 @@
     <% if session[:user_id].nil? %>
       <div id="login-signup">
         <button type="button" name="button"><a href="/session/new">Login</a></button>
-        <button type="button" name="button"><a href="/user/new">Signup</a></button>
-        <!-- # ADD LOGIN / SIGNUP HERE -->
+        <button type="button" name="button"><a href="/user/new">Register</a></button>
       </div>
     <% else %>
-    <h1>Welcome Back <%= User.find(session[:user_id]).username %> </h1>
       <div id="logout">
         <form id="user-logout" action="/session/<%= session[:user_id] %>" method="post">
           <input type="hidden" name="_method" value="delete">
           <button type="submit" name="button">Logout</button>
         </form>
-        <!-- # ADD LOGOUT HERE -->
+        <h1>Welcome Back <%= User.find(session[:user_id]).username %> </h1>
       </div>
     <% end %>
   </nav>
