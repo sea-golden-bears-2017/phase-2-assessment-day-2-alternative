@@ -38,9 +38,11 @@
   </nav>
 
   <!-- Error Handler -->
+  <div id="error-handler">
   <% if @error != nil %>
     <p><%= @error %></p>
   <% end %>
+</div>
 
   <%= yield %>
 </body>

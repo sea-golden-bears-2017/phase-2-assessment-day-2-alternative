@@ -8,7 +8,7 @@ post '/session' do
     session[:user_id] = user.id
     redirect '/'
   else # Else authenticate returns nil
-    @error_messages = ['Login failed, please try again.']
+    @error = "Login failed, please fill out all fields."
     erb :'/sessions/new'
   end
 end
