@@ -3,9 +3,9 @@ get '/session/new' do
 end
 
 post '/session' do
-  player = Player.authenticate(params[:username], params[:password])
-  if player # If authenticate returns a player
-    session[:player_id] = player.id
+  user = User.authenticate(params[:username], params[:password])
+  if user # If authenticate returns a user
+    session[:user_id] = user.id
     redirect '/'
   else # Else authenticate returns nil
     @error_messages = ['Login failed, please try again.']
