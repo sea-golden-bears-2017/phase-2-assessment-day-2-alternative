@@ -5,3 +5,13 @@
 <p>Date: <%= @potluck.date_at %> </p>
 <p>Time: <%= @potluck.time_at %> </p>
 <p>Posted By: <%= @potluck.user.username %> </p>
+
+<% if session[:user_id].nil? %>
+
+<% elsif session[:user_id] == @potluck.user.id%>
+  <form class="potluck-delete-form" action="/potluck/<%= @potluck.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button id="submit-delete" type="submit" name="submit">Delete This Potluck</button>
+  </form>
+<% else %>
+<% end %>

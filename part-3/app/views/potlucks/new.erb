@@ -4,6 +4,5 @@
   <input type="text" name="potluck[name]" placeholder="Potluck Name">
   <input type="text" name="potluck[location]" placeholder="Location">
   <input type="text" name="datetime" placeholder="Time: YYYY-MM-DD HH:MM">
-  <input type="hidden" name="potluck[user_id]" value="<%= User.find(session[:user_id]).id %> ">
   <button type="submit" name="submit">Create Potluck</button>
 </form>
