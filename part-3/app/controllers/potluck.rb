@@ -20,13 +20,10 @@ post '/potluck' do
 end
 
 get '/potluck' do
-  @potlucks = Potluck.all
   erb :'/potlucks/index'
 end
 
 get '/potluck/:id' do
   @potluck = Potluck.find(params[:id])
-  p "8" * 100
-  p @potluck
   erb :'/potlucks/show'
 end

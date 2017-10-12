@@ -1,1 +1,9 @@
 <h1>Homepage</h1>
+<% @potlucks.each do |potluck| %>
+  <hr>
+  <h3>Name: <a href="/potluck/<%= potluck.id %>"><%= potluck.name %></a></h3>
+  <p>Location: <%= potluck.location %> </p>
+  <p>Date: <%= potluck.date_at %> </p>
+  <p>Time: <%= potluck.time_at %> </p>
+  <p>Posted By: <%= potluck.user.username %> </p>
+<% end %>
